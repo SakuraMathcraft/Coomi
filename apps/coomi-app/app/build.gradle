@@ -259,6 +259,7 @@ def coomiRustup = System.getenv("COOMI_RUSTUP") ?: "rustup"
 tasks.register("installCoomiRustAndroidTarget", Exec) {
     group = "coomi build"
     description = "Install the Rust ARM64 Android standard library."
+    workingDir coomiRustRoot
     commandLine coomiRustup, "target", "add", coomiRustTarget
 }
 

@@ -86,8 +86,7 @@ def package_release(identity, sdk, output):
     (output / "latest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     (output / f"{target.name}.sha256").write_text(f"{digest}  {target.name}\n", encoding="utf-8")
     shutil.copyfile(notes_path, output / "release-notes.md")
-    for name in ("proot-host-arm64.tar.gz", "ubuntu-noble-arm64.tar.gz", "runtime-v2-manifest.json"):
-        shutil.copyfile(ROOT / "runtime-v2-dist" / name, output / name)
+    shutil.copyfile(ROOT / "runtime-v2-dist/runtime-v2-manifest.json", output / "runtime-v2-manifest.json")
     print(json.dumps({"file": target.name, "sha256": digest, "versionCode": identity["versionCode"]}))
 
 

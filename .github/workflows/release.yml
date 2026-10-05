@@ -106,7 +106,9 @@ jobs:
           cache: npm
           cache-dependency-path: apps/web/package-lock.json
       - name: Install Android SDK/NDK
-        run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0' 'ndk;27.0.12077973'
+        run: |
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
+            'platforms;android-36' 'build-tools;36.0.0' 'ndk;27.0.12077973'
       - name: Install Rust toolchain
         working-directory: apps/coomi-rs
         run: rustup show active-toolchain
